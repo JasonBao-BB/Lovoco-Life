@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <title>Lovoco Demo II</title>
+
+    <meta name="description" content="Lovoco Life, ALL FINISHED BY Boyang Bao FK Team" />
+    <meta name="keywords" content="WebRTC,RTCMultiConnection" />
+
+    <style>
+        video {
+            object-fit: fill;
+            width: 100%;
+        }
+
+        button,
+        input,
+        select {
+            font-weight: normal;
+            padding: 2px 4px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .make-center {
+            text-align: center;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+
+        <header style="text-align: center;">
+            <h1>Screen Sharing using RTCMultiConnection</h1>
+
+        </header>
+
+
+        <div class="github-stargazers"></div>
+
+        <section class="experiment">
+            <div class="make-center">
+                <input type="text" id="room-id" value="abcdef">
+                <button id="open-room">Open Room</button>
+                <button id="join-room">Join Room</button>
+                <button id="open-or-join-room">Auto Open Or Join Room</button>
+
+                <hr>
+                <button id="share-camera">Share Camera</button>
+                <hr>
+
+                <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+            </div>
+
+            <div id="videos-container"></div>
+
+            <br>
+            <br>
+
+            <div id="videos-container"></div>
+        </section>
+
+        <script src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- import RecordRTC -->
+        <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+        <!-- capture screen from any HTTPs domain! -->
+        <script src="https://cdn.webrtc-experiment.com:443/getScreenId.js"></script>
+
+        <script>
+            // ......................................................
+            // .......................UI Code........................
+            // ......................................................
+            document.getElementById('share-camera').onclick = function () {
+                disableInputButtons();
+                connection.addStream({
+                    video: true
+                });
+
+            }
+
+            document.getElementById('open-room').onclick = function () {
+                connection.sessionid = (Math.random() * 999999999999).toString().replace('.', '');
+                this.disabled = true;
+                connection.extra = {
+                    'session-name': document.getElementById('room-id').value || 'Anonymous'
+                };
+                connection.open(document.getElementById('room-id').value, function () {
+                    showRoomURL(connection.sessionid);
+                });
+            };
+
+            document.getElementById('join-room').onclick = function () {
+                disableInputButtons();
+                connection.join(document.getElementById('room-id').value);
+            };
+
+            document.getElementById('open-or-join-room').onclick = function () {
+                disableInputButtons();
+                connection.openOrJoin(document.getElementById('room-id').value, function (isRoomExists, roomid) {
+                    if (!isRoomExists) {
+                        showRoomURL(roomid);
+                    }
+                });
+            };
+
+            //============= Logic Code ==============
+
+            var connection = new RTCMultiConnection();
+            console.log(connection.streams);
+            // by default, socket.io server is assumed to be deployed on your own URL
+            connection.socketURL = '/';
+
+            // comment-out below line if you do not have your own socket.io server
+            // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+            connection.socketMessageEvent = 'screen-sharing-demo';
+
+            //Boyang - Here is I add audio
+            connection.session = {
+                screen: true,
+                audio: true,
+                oneway: true
+            };
+
+            //Boyang - Here is observer can receive the audio and video
+            connection.sdpConstraints.mandatory = {
+                OfferToReceiveAudio: true,
+                OfferToReceiveVideo: true
+            };
+
+            var videosContainer = document.getElementById('videos-container');
+            //connection.videosContainer = document.getElementById('videos-container');
+
+            connection.onstream = function (event) {
+                //===========================================================================
+                // var mediaPlayer = event.mediaElement;
+                // connection.videosContainer.appendChild(mediaPlayer);
+                // //event.mediaElement.play();
+                // mediaPlayer.play();
+                // setTimeout(function () {
+                //     //event.mediaElement.play();
+                //     mediaPlayer.play();
+                // }, 5000);
+                console.log("Here is streamid: "+ event.streamid);
+                appendVideo(event.mediaElement, event.streamid);
+                
+            };
+
+            function appendVideo(video, streamid) {
+                video.width = 600;
+                video = getVideo(video, streamid);
+                videosContainer.insertBefore(video, videosContainer.firstChild);
+            }
+
+            //Recording
+            function getVideo(video, streamid) {
+                var div = document.createElement('div');
+                div.className = 'video-container';
+
+                var button = document.createElement('button');
+                button.id = streamid;
+                button.innerHTML = 'Start Recording';
+                console.log('running...');
+                
+                button.onclick = function () {
+                    this.disabled = true;
+                    if (this.innerHTML == 'Start Recording') {
+                        this.innerHTML = 'Stop Recording';
+                        console.log('running...');
+                        console.log(connection.streams[this.id]);
+                        connection.streams[this.id].startRecording({
+                            audio: true,
+                            video: true,
+                            screen: true
+                        });
+                        console.log('recording...');
+                    } else {
+                        this.innerHTML = 'Start Recording';
+                        var stream = connection.streams[this.id];
+                        stream.stopRecording(function (blob) {
+                            var h2;
+
+                            if (blob.audio && !(connection.UA.Chrome && stream.type == 'remote')) {
+                                h2 = document.createElement('h2');
+                                h2.innerHTML = '<a href="' + URL.createObjectURL(blob.audio) + '" target="_blank">Open recorded ' + blob.audio.type + '</a>';
+                                div.appendChild(h2);
+                            }
+
+                            if (blob.video) {
+                                h2 = document.createElement('h2');
+                                h2.innerHTML = '<a href="' + URL.createObjectURL(blob.video) + '" target="_blank">Open recorded ' + blob.video.type + '</a>';
+                                div.appendChild(h2);
+                            }
+                        });
+                    }
+                    setTimeout(function () {
+                        button.disabled = false;
+                    }, 3000);
+                };
+                div.appendChild(button);
+                div.appendChild(video);
+                return div;
+            }
+
+            // Using getScreenId.js to capture screen from any domain
+            // You do NOT need to deploy Chrome Extension YOUR-Self!!
+            connection.getScreenConstraints = function (callback) {
+                getScreenConstraints(function (error, screen_constraints) {
+                    if (!error) {
+                        screen_constraints = connection.modifyScreenConstraints(screen_constraints);
+                        callback(error, screen_constraints);
+                        return;
+                    }
+                    throw error;
+                });
+            };
+
+            function disableInputButtons() {
+                document.getElementById('open-or-join-room').disabled = true;
+                document.getElementById('open-room').disabled = true;
+                document.getElementById('join-room').disabled = true;
+                document.getElementById('room-id').disabled = true;
+            }
+
+            // ......................................................
+            // ......................Handling Room-ID................
+            // ......................................................
+
+            function showRoomURL(roomid) {
+                var roomHashURL = '#' + roomid;
+                var roomQueryStringURL = '?roomid=' + roomid;
+
+                var html = '<h2>Unique URL for your room:</h2><br>';
+
+                html += 'Hash URL: <a href="' + roomHashURL + '" target="_blank">' + roomHashURL + '</a>';
+                html += '<br>';
+                html += 'QueryString URL: <a href="' + roomQueryStringURL + '" target="_blank">' + roomQueryStringURL + '</a>';
+
+                var roomURLsDiv = document.getElementById('room-urls');
+                roomURLsDiv.innerHTML = html;
+
+                roomURLsDiv.style.display = 'block';
+            }
+
+            (function () {
+                var params = {},
+                    r = /([^&=]+)=?([^&]*)/g;
+
+                function d(s) {
+                    return decodeURIComponent(s.replace(/\+/g, ' '));
+                }
+                var match, search = window.location.search;
+                while (match = r.exec(search.substring(1)))
+                    params[d(match[1])] = d(match[2]);
+                window.params = params;
+            })();
+
+            var roomid = '';
+            if (localStorage.getItem(connection.socketMessageEvent)) {
+                roomid = localStorage.getItem(connection.socketMessageEvent);
+            } else {
+                roomid = connection.token();
+            }
+            document.getElementById('room-id').value = roomid;
+            document.getElementById('room-id').onkeyup = function () {
+                localStorage.setItem(connection.socketMessageEvent, this.value);
+            };
+
+            var hashString = location.hash.replace('#', '');
+            if (hashString.length && hashString.indexOf('comment-') == 0) {
+                hashString = '';
+            }
+
+            var roomid = params.roomid;
+            if (!roomid && hashString.length) {
+                roomid = hashString;
+            }
+
+            if (roomid && roomid.length) {
+                document.getElementById('room-id').value = roomid;
+                localStorage.setItem(connection.socketMessageEvent, roomid);
+
+                // auto-join-room
+                (function reCheckRoomPresence() {
+                    connection.checkPresence(roomid, function (isRoomExists) {
+                        if (isRoomExists) {
+                            connection.join(roomid);
+                            return;
+                        }
+
+                        setTimeout(reCheckRoomPresence, 5000);
+                    });
+                })();
+
+                disableInputButtons();
+            }
+        </script>
+
+    </article>
+
+    <footer>
+    </footer>
+
+</body>
+
+</html>
