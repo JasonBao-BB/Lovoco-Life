@@ -1,0 +1,526 @@
+/* ***********************************Proprietary Notice****************************************
+This Software and the intellectual property therein is property of GoVivace. 
+Unauthorized copying, duplication,
+or any other improper use not directly authorized by the company is strictly prohibited.
+ Copyright 2010-2015
+********************************************************************************************* 
+*/
+
+BODY
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    border-right: medium none;
+    border-top: medium none;
+    margin: 0px;
+    border-left: medium none;
+    border-bottom: medium none;
+    /*background-image: url(/Images/bg.gif);*/
+    background-color:White;
+}
+.BlueBox
+{
+    background-color: #B9D6F8;
+    border: 1px solid #5498EB;
+    padding: 3px;
+    vertical-align: top;
+}
+.ItemFont
+{
+	font-size:50px;
+	font-weight:bold;
+	font-family:Tahoma;
+}
+.reTool .SpeechRecognition
+{
+   background-image: url(../Img/mic.jpg);
+}
+.clssubtopic
+{
+    background-color: #5685B3;
+    color: white;
+    font-family: verdana;
+    font-weight: bold;
+    height: 18px;
+    font-size: 11px;
+    border-bottom: solid 1px #9f9f9f;
+    padding-left: 10px;
+}
+
+.clssubtopicbar
+{
+    height: 22px;
+    border-bottom: solid 1px #9f9f9f;
+}
+
+
+.clspopupwindow
+{
+    background-image: url(/Images/bg.gif);
+}
+
+.GVFixedHeader
+{
+    font-weight: normal;
+    text-align: left;
+    position: relative;
+    height: 22px;
+    top: expression(this.parentNode.parentNode.parentNode.scrollTop);
+}
+
+.GVFixedFooter
+{
+    position: relative;
+    background-image: url(/images/backlg.jpg);
+    height: 22px;
+    font-size: xx-small;
+    top: expression(this.parentNode.parentNode.parentNode.scrollTop);
+}
+
+.CollapsablePanelTop
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #003366;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: 5px;
+    height: 30px;
+    padding-left: 30px;
+    background-color: #e0ebfd;
+    vertical-align: middle;
+}
+
+.clsGridheaderCoverSheet
+{
+    background-image: url(/Images/coversheet.gif);
+    height: 19px;
+    color: Black;
+    letter-spacing: 1px;
+    border-right: 1px solid #ccc;
+    padding-left: 5px;
+}
+.txt06
+{
+    font-family: Verdana,Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #003366;
+    text-decoration: none;
+    line-height: 20px;
+    background-color: #F0F0F0;
+    padding-left: 8px;
+}
+.brdr01
+{
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #DBDBDB;
+    border-right-color: #BEBEBE;
+    border-bottom-color: #BEBEBE;
+    border-left-color: #DBDBDB;
+}
+.TopToolbar
+{
+    background-image: url(/images/bck01.jpg);
+}
+
+/*input
+{
+    border:solid 1px #0099CC;
+    font-size:11px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+}*/
+
+chk1
+{
+    border: solid 0px black;
+}
+
+
+input:visited
+{
+    border: solid 2px #0099CC;
+    font-size: 24px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+textarea
+{
+    border: solid 1px #0099CC;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.gridInput
+{
+    border: solid 0px #0099CC;
+    font-size: 11px;
+    text-align: left;
+    padding: 1px 1px 1px 1px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a.BtnBookmark:link, a.BtnBookmark:visited
+{
+    background-image: url(/images/butt-bck01.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    height: 25px;
+    width: 95px;
+    border: none;
+}
+a.BtnBookmark:hover
+{
+    background-image: url(/images/butt-bck02.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    height: 25px;
+    width: 95px;
+    border: none;
+}
+
+.line01
+{
+    border-top-width: 1px;
+    border-top-style: dotted;
+    border-top-color: #999999;
+    border-right-color: #999999;
+    border-bottom-color: #999999;
+    border-left-color: #999999;
+}
+.bck-tpmnu
+{
+    background-image: url(/images/bck-07.jpg);
+}
+.bck-Loginmnu
+{
+    background-image: url(/images/bck-07.jpg);
+    background-repeat: repeat-x;
+    height: 32px;
+}
+.txt02
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #003366;
+    text-decoration: none;
+}
+.lnk-rt
+{
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+}
+.topbck
+{
+    background-image: url(/images/topbar-bck.jpg);
+    background-repeat: repeat-x;
+}
+.PageLeft
+{
+    background-image: url(/Images/bck-shdr-lft.jpg);
+    background-repeat: repeat-y;
+    background-position: right;
+}
+
+.PageCentre
+{
+    background-color: #FFFFFF;
+}
+
+.PageRight
+{
+    background-image: url(/Images/bck-shdr-rt.jpg);
+    background-repeat: repeat-y;
+    background-position: left;
+}
+
+.MnuHover
+{
+    background-color: #FDFDFD;
+    height: 30px;
+    color: Black;
+}
+.FooterMenu
+{
+    background-color: #333333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 22px;
+}
+.tabOn
+{
+    background-image: url(/images/backlg.jpg);
+    height: 25px;
+    text-align: center;
+    color: White;
+}
+
+.tabOff
+{
+    background-image: url(/images/backup.png);
+    height: 25px;
+    text-align: center;
+    border-bottom: solid 1px #599DF0;
+}
+.tabMenuOff
+{
+    text-decoration: none;
+    line-height: 15px;
+    color: white;
+}
+.dropdownlist
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: normal;
+    color: black;
+    width: 150px;
+}
+.ListBox
+{
+    overflow: hidden;
+    border: solid 0px black;
+}
+
+.black
+{
+    float: left;
+    filter: alpha(opacity=25);
+    -moz-opacity: .25;
+    opacity: .25;
+}
+
+.white
+{
+    background-color: White;
+}
+
+.linkText
+{
+    text-decoration: underline;
+    text-transform: none;
+}
+.gridInputNumber
+{
+    border: solid 0px #0099CC;
+    font-size: 11px;
+    text-align: right;
+    padding: 1px 1px 1px 1px;
+}
+
+.ButtonClicked
+{
+    border-color: #EB8022;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.ButtonUnClicked
+{
+    border-color: #EB8022;
+    border-width: 0px;
+    border-style: solid;
+}
+
+.List
+{
+    border: solid 1px black;
+    border-style: solid;
+}
+.txtAlignRight
+{
+    border-right: #0099cc 1px solid;
+    padding-right: 1px;
+    border-top: #0099cc 1px solid;
+    padding-left: 1px;
+    font-size: 11px;
+    padding-bottom: 1px;
+    border-left: #0099cc 1px solid;
+    padding-top: 1px;
+    border-bottom: #0099cc 1px solid;
+    text-align: right;
+}
+
+.SideHeading
+{
+    
+    vertical-align: bottom;
+    padding: 3px;
+    width: 90%;
+    font-weight: bold;
+    border: 1px solid #a4a4a4;
+    border-bottom: 0px;
+    border-right: 0px;
+    background-color: #EFEFEF;
+}
+.SideClose
+{
+    width: 5%;
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    border-bottom: 0px;
+    color: White;
+}
+.SideSection
+{
+    visibility: hidden;
+    position: absolute;
+    width: 1px;
+    top: 73px;
+    border: 1px thin #a4a4a4;
+}
+.SideContent
+{
+    border: 1px solid #a4a4a4;
+    padding: 0px;
+    width: 100%;
+}
+
+.tabMenuOff
+{
+    text-decoration: none;
+    color: White;
+}
+
+.clsGridheaderCoverSheet
+{
+    background-image: url(/Images/cover-header.jpg);
+    height: 19px;
+    color: Black;
+    letter-spacing: 1px;
+    border-right: 1px solid #ccc;
+    padding-left: 5px;
+}
+.modalBackground 
+{
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+.modalPopup 
+{
+	background-color:#EBE8D3;
+	border-width:3px;
+	border-style:solid;
+	border-color:Gray;
+	padding:3px;
+    z-index:200000 !important;
+}
+.unwatermarked 
+{
+	font-style:italic;
+}
+
+.watermarked 
+{
+	font-style:italic;
+	padding:2px 0 0 2px;
+	border:1px solid #6699CC;
+	background-color:#EBF2FE;
+	color:gray;
+	height:14px;
+}
+
+.tophead
+{
+    
+    height: 30px;
+    vertical-align: middle; 
+    color: White; 
+    font-size: 11px; 
+    padding-left: 1px; 
+    text-decoration:none;
+    font-family:Verdana;
+    font-weight:normal;
+    
+}
+/* For notification */
+        .clockSession
+        {
+            width: 409px;
+            height: 174px;
+            margin: auto;
+            background: url(../Img/clockSession.jpg) no-repeat;
+        }
+        
+        .contSession
+        {
+            width: 270px;
+            float: right;
+            text-align: center;
+            margin: 20px 20px 0 0 ;
+        }
+        
+        .sessionExpire
+        {
+            color: #3366ff;
+            padding-top: 30px;
+        }
+        
+        .showNotification
+        {
+            padding-top: 15px;
+            color: #666;
+        }
+        
+        .timeRemain
+        {
+            padding-top: 5px; 
+            color: #000;
+        }
+        
+        .timeSeconds
+        {
+            font-size: 30px;
+        }
+        
+        .infoIcon, .notificationContent
+        {
+            display: inline-block;
+            display: inline;
+        }
+        
+        .infoIcon
+        {
+            width: 32px;
+            height: 32px;
+            margin: 0 10px ;
+            vertical-align: top;
+        }
+        
+        .notificationContent
+        {
+            width: 160px;
+            vertical-align: middle;
+        }
+        .infoNotification
+        {
+        	src: url(Images/infoIcon.jpg);
+        }
+
+        .reContent
+        {
+            min-height:300px !important;            
+        }
+    

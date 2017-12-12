@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="jsfile/dictate.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="jsfile/EMRStyle.css" rel="stylesheet" type="text/css" />
+        <link href="jsfile/Style.css" rel="stylesheet" type="text/css" />
+        <!-- Latest compiled and minified CSS -->
+        <script type="text/javascript">
+            var UserProfile;
+            function toggleRecording() {
+                document.getElementById('meter').style.visibility = 'visible';
+                console.log("Change the visibility of meter ....");
+            }
+        </script>
+        <!-- Here is style file -->
+        <style>
+		span.absolute {
+			position: absolute;
+			top: 550px;
+			right: 0;
+
+		}
+		.problem {text-align:center}
+		.enclose {position:fixed;bottom:0px;width:100%;font-size: 25px;z-index: 2147483647; background-color: rgba(117, 190, 218, 0.5); height: 70px}
+		.enclose2 {position:fixed;bottom:70px;width:100%;font-size: 25px;z-index: 2147483647; background-color: rgba(117, 190, 218, 0.5); height: 70px}
+        body{
+            max-width: 100%;
+		 overflow-x: hidden;
+        }
+            .tbl{
+                border-collapse:collapse;
+            }
+            .file-upload {
+                position: relative;
+                overflow: hidden;
+                margin: 10px;
+            }
+            .file-upload input.file-input {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+			.input-field {
+				height: 70px;
+				width: 400px;
+			}
+            .filterContBot{position:inherit; left:0px; width:100%; bottom:0px; height:50px; border-top:1px solid #ffffff; text-align:center; color:#0c0c0c; font-size:12px; font-weight:500; text-transform:uppercase; }
+            .listenBtn{background:#0b3c3d url(Images/listen-icon.png) no-repeat 11px center; width:84px; height:25px; line-height:25px; position:inherit; left:78%; display:inline-block; border-radius:4px; padding-left:34px; cursor:pointer}
+            .listenBtn:hover{background-color:#062526;}
+            .filterContBot ul {height:100%; width:100%; display:table;}
+            .filterContBot ul li{ display:table-cell; vertical-align:top; width:33%; height:127px; border-left:1px solid #ffffff}
+            .filterContBot ul li:first-child{  border-left:0px;}
+            .filterContBot ul li h3{ font-size:36px; margin-bottom:36px; }
+            .filterContBot ul li.imagebox{ padding-top:18px;}
+            .filterContBot ul li.imagebox a{width:63px; height:63px; display:inline-block; text-align:center; line-height:66px; background:#ffffff; border-radius:100%; border:7px solid #FFFFFF; margin-bottom:9px }
+            .filterContBot ul li.imagebox canvas {
+                background: #ffffff none repeat scroll 0 0;
+                border: 7px solid #60c9ab;
+                border-radius: 100%;
+                display: inline-block;
+                height: 63px;
+                line-height: 66px;
+                margin-bottom: 9px;
+                text-align: center;
+                width: 63px;
+            }
+            .filterContBot ul li.imagebox canvas:hover{border:7px solid #4bb496;}
+            .filterContBot ul li.imagebox a:hover{border:7px solid #FFFFFF;}
+            a, a img, img { transition:all .2s linear; -moz-transition:all .2s linear; -webkit-transition:all .2s linear;vertical-align: baseline; }
+        </style>
+
+	    <title>Speech-To-Text-Transcription</title>
+      <link rel="SHORTCUT ICON" href="favicon.ico" />
+
+      <!-- ================================================================= -->
+      <!-- ============================================================== -->
+
+      <!-- Import the CSS style for this page -->
+      <link rel="stylesheet" href="">
+      <!-- JavaScripts for the broadcasting -->
+      <script src="https://cdn.webrtc-experiment.com/socket.io.js"></script>
+      <script src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
+      <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
+
+      <!-- materialize-css icon -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+
+    <!-- body start from here -->
+    <body>
+        <!-- Here is video conference part -->
+        <div>
+          <h1 style="text-align:center;">
+              <img src="./assets/lovoco2.png" />
+          </h1>
+
+          <section class="experiment">
+              <section>
+
+                  <div class="row ">
+                      <!-- Set up the conference name for the room -->
+                      <div class="input-field col s7">
+                          <i class="material-icons prefix">desktop_mac</i>
+                          <input placeholder="Conferenece" class="validate" type="text" id="conference-name">
+                      </div>
+
+                      <div style="margin-bottom" class="col s4">
+						<button style="margin-right: 20px;" id="setup-new-conference" class='setup' type="button">Create Room</button>
+						<button id="leave-conference" class="setup" type="button">Leave Room</button>
+                          <span>Create Private Room:<span> 
+                          <a href="" target="_blank" title="Open this link in new tab. Then your room will be private!">
+                              <code>
+                                 <strong id="unique-token">#123456</strong>
+                              </code>
+                          </a>
+                      </div>
+                  </div>
+              </section>
+              <!-- list of all available broadcasting rooms -->
+              <table id="rooms-list"></table>
+              <!-- local/remote videos container -->
+              <div id="videos-container"></div>
+          </section>
+        </div>
+        <!-- Here is feature implementation -->
+        <script src="./audio_video_screen/audio_video_screen.js"></script>
+		
+		<div style="margin-top:20px;">
+			<div class="input-field col s12">
+			<select id = "lang">
+			  <option value="">Choose Languages</option>
+			  <option value="de">German</option>
+			  <option value="ar">Arabic</option>
+			  <option value="fr">French</option>
+			  <option value="es">Spanish</option>
+			  <option value="fa">Farsi</option>
+			  <option value="zh">chinese</option>
+			  <option value="hr">Croatian</option>
+			  <option value="it">Italian</option>
+			  <option value="ru">Russian</option>
+			  <option value="sl">Slovenian</option>
+			  <option value="tr">Turkish</option>
+			  <option value="sl">Slovenian</option>
+			  <option value="pl">Polish</option>
+			  <option value="pt">Portuguese</option>
+			  <option value="ro">Romanian</option>
+			</select>
+		</div>
+  </div>
+		</div>
+        <!-- Here is subtitle part -->
+        <div class="filterContBot">
+            <ul>
+                <li class="imagebox recording">
+                    <canvas id="meter" width="60" height="70"></canvas><span id="lblSilence" style="visibility:hidden;"></span>  <br>
+                                RECORD
+                </li>
+                <!-- <li class="imagebox listening">
+                    <a href="javascript:void(0)" class="audio" id="audio2" onclick='playPause(this)'><audio id="play" src='in/Cuticle.wav'></audio><img src="Images/listen.png"></a>
+                              <br>
+                                LISTEN
+                </li> -->
+                <li style="display:none;" class="imagebox uploading">
+                    <a class="image-upload">
+                        <label for="file-input">
+                            <img src="Images/upload.png"/>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;" accept="audio/wav" />
+                    </a>
+                    <br>
+                    UPLOAD
+                </li>
+            </ul>
+        </div>
+
+        <img id="mic" src="Images/red.png" width="80px" height="80px" style="visibility: hidden;">
+        <img id="micgreen" src="Images/black.png" width="80px" height="80px" style="visibility: hidden;">
+            <span ID="hfServerStatus" />
+                <div style="display:none;" >
+                  <pre id="log" ></pre>
+                </div>
+                <div>
+                    <h1>
+                        <!-- <span rows="1" cols="50" id="p1" class = "enclose problem">How does any of this work anyways?</span>-->
+						<span id="p1" visibility: hidden></span><br>
+						<span id = "p2" visibility: hidden></span>
+						<span id = "p3"></span>
+                        <span id="better_subs" class="enclose2 problem"></span><br>
+						<iframe id = "if" src = "" class = "enclose problem"> </iframe>
+                    </h1>
+
+                </div>
+                <textarea id="trans" rows="1" style="width: 100%; margin-top: .5em; visibility:hidden;" ></textarea>
+                <p ID="hfSavedJSON"/>
+                <!-- Bootstrap core JavaScript
+                ================================================== -->
+                <!-- Placed at the end of the document so the pages load faster -->
+                <script src="jsfile/jquery-1.10.2.min.js"></script>
+                <!-- Latest compiled and minified JavaScript -->
+                <script src="jsfile/recorder.js"></script>
+                <script src="jsfile/mob.js"></script>
+		        <script src="jsfile/recorderWorker.js"></script>
+                <script src="jsfile/volume-meter.js"></script>
+                <!-- Include the main app logic -->
+                <script src="jsfile/main.js"></script>
+                <script type="text/javascript">
+
+                    function playPause(object) {
+                    var audiolist = document.getElementsByClassName("audio");
+                    for (var i = 0; i < audiolist.length; i++) {
+                        // alert(  document.getElementById($(audiolist[i]).attr("id")).innerHTML);
+                        document.getElementById($(audiolist[i]).attr("id")).firstChild.pause();
+                        document.getElementById($(audiolist[i]).attr("id")).firstChild.currentTime = 0;
+                        }
+                    document.getElementById($(object).attr("id")).firstChild.play();
+                    }
+
+
+
+                    function uploadAudio (mp3Data,recordingname) {
+                    var fd = new FormData();
+                    fd.append("recordingData", mp3Data);
+                    fd.append("recordingName", recordingname);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'upload.php', true);
+                    xhr.onload = function(data) {
+                    if (this.status == 200) {
+                        //console.log(data);
+                        console.log("file is uplaod");
+                    };
+                };
+                xhr.send(fd);
+            }
+			var tran_socket;
+var tran_socketId = 0;
+var tran_roomId = 0;
+var tran_words;
+	tran_socket = io.connect('https://ec2-18-217-2-182.us-east-2.compute.amazonaws.com:8888/');
+//	tran_socket.on('post', function(data){
+		//getting data
+		//console.log("Got: " + data.title)
+		//document.getElementById("p3").innerHTML = data.title;
+	//});
+	tran_socket.on('subtitle', function(data){
+		//getting data
+		//let text = data.text;
+	    console.log("Got: " + data);
+	    tran_words = data;
+		document.getElementById("p1").innerHTML = tran_words;
+		if (tran_words.length > 200) {
+		    document.getElementById("better_subs").innerHTML = tran_words.substring((tran_words.length-200), tran_words.length);
+		}else{
+		    document.getElementById("better_subs").innerHTML = tran_words;
+		}
+	});
+	setInterval(myMethod,500);
+function myMethod() {
+var dat = {
+			text: document.getElementById("p1").innerHTML,
+			lang: document.getElementById("lang").value,
+			id: tran_socketId,
+			room: tran_roomId
+		}
+			tran_socket.emit('pre', dat);
+			document.getElementById("if").src = 'https://mt.lovoco.co/translate?source=en&target=' + document.getElementById('lang').value + '&input=' + document.getElementById("better_subs").innerHTML + '&key=4ac85ecd-dc6d-49ee-a768-602ae2192ec9';
+}
+    </script>
+
+</body>
+</html>

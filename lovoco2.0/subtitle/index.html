@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="jsfile/dictate.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="jsfile/EMRStyle.css" rel="stylesheet" type="text/css" />
+        <link href="jsfile/Style.css" rel="stylesheet" type="text/css" />
+        <!-- Latest compiled and minified CSS -->
+        <script type="text/javascript">
+            var UserProfile;           
+            function toggleRecording() {
+                document.getElementById('meter').style.visibility = 'visible';
+                console.log("Change the visibility of meter ....");
+            }   
+        </script>
+        <style>
+        body{
+            max-width: 100%;
+    overflow-x: hidden;
+        }
+            .tbl{
+                border-collapse:collapse;
+            }
+            .file-upload {
+                position: relative;
+                overflow: hidden;
+                margin: 10px;
+            }
+            .file-upload input.file-input {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0;
+                filter: alpha(opacity=0); 
+            }
+            .filterContBot{position:inherit; left:0px; width:100%; bottom:0px; height:50px; border-top:1px solid #ffffff; text-align:center; color:#0c0c0c; font-size:12px; font-weight:500; text-transform:uppercase; }
+            .listenBtn{background:#0b3c3d url(Images/listen-icon.png) no-repeat 11px center; width:84px; height:25px; line-height:25px; position:inherit; left:78%; display:inline-block; border-radius:4px; padding-left:34px; cursor:pointer}
+            .listenBtn:hover{background-color:#062526;}
+            .filterContBot ul {height:100%; width:100%; display:table;}
+            .filterContBot ul li{ display:table-cell; vertical-align:top; width:33%; height:127px; border-left:1px solid #ffffff} 
+            .filterContBot ul li:first-child{  border-left:0px;}
+            .filterContBot ul li h3{ font-size:36px; margin-bottom:36px; }
+            .filterContBot ul li.imagebox{ padding-top:18px;}
+            .filterContBot ul li.imagebox a{width:63px; height:63px; display:inline-block; text-align:center; line-height:66px; background:#ffffff; border-radius:100%; border:7px solid #FFFFFF; margin-bottom:9px }
+            .filterContBot ul li.imagebox canvas {
+                background: #ffffff none repeat scroll 0 0;
+                border: 7px solid #60c9ab;
+                border-radius: 100%;
+                display: inline-block;
+                height: 63px;
+                line-height: 66px;
+                margin-bottom: 9px;
+                text-align: center;
+                width: 63px;
+            }
+            .filterContBot ul li.imagebox canvas:hover{border:7px solid #4bb496;}
+            .filterContBot ul li.imagebox a:hover{border:7px solid #FFFFFF;}
+            a, a img, img { transition:all .2s linear; -moz-transition:all .2s linear; -webkit-transition:all .2s linear;vertical-align: baseline; }
+        </style>
+        
+	    <title>Speech-To-Text-Transcription</title>
+        <link rel="SHORTCUT ICON" href="favicon.ico" />
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://www.govivace.com">
+                    <img alt="Brand" src="Images/logogovivac.png">
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="filterContBot">
+            <ul>
+                <li class="imagebox recording">             
+                    <canvas id="meter" width="60" height="70"></canvas><span id="lblSilence" style="visibility:hidden;"></span>  <br>
+                                RECORD
+                </li>
+                <li class="imagebox listening">        
+                    <a href="javascript:void(0)" class="audio" id="audio2" onclick='playPause(this)'><audio id="play" src='in/Cuticle.wav'></audio><img src="Images/listen.png"></a>
+                              <br>
+                                LISTEN
+                </li>
+                <li class="imagebox uploading">            
+                    <a class="image-upload">
+                        <label for="file-input">
+                            <img src="Images/upload.png"/>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;" accept="audio/wav" />
+                    </a>
+                    <br>
+                    UPLOAD
+                </li>
+            </ul>
+        </div>
+        <img id="mic" src="Images/red.png" width="80px" height="80px" style="visibility: hidden;">
+        <img id="micgreen" src="Images/black.png" width="80px" height="80px" style="visibility: hidden;">
+            <span ID="hfServerStatus" />         
+                <div style="display:none;" > 
+                  <pre id="log" ></pre>          
+                </div>
+                <div>
+                    <h1>
+                        <span id="p1"></span>
+                        <span id="p2"></span>
+                    </h1>
+                </div>
+                <textarea id="trans" rows="1" style="width: 100%; margin-top: .5em; visibility:hidden;" ></textarea>
+                <p ID="hfSavedJSON"/>
+                <!-- Bootstrap core JavaScript
+                ================================================== -->
+                <!-- Placed at the end of the document so the pages load faster -->
+                <script src="jsfile/jquery-1.10.2.min.js"></script>
+                <!-- Latest compiled and minified JavaScript -->
+                
+                <script src="jsfile/recorder.js"></script>
+                <script src="jsfile/mob.js"></script>
+		        <script src="jsfile/recorderWorker.js"></script>
+                <script src="jsfile/volume-meter.js"></script>
+                <!-- Include the main app logic -->
+                <script src="jsfile/main.js"></script>
+                <script type="text/javascript"> 
+                    function playPause(object) {
+                    var audiolist = document.getElementsByClassName("audio");
+                    for (var i = 0; i < audiolist.length; i++) {
+                        // alert(  document.getElementById($(audiolist[i]).attr("id")).innerHTML);
+                        document.getElementById($(audiolist[i]).attr("id")).firstChild.pause();
+                        document.getElementById($(audiolist[i]).attr("id")).firstChild.currentTime = 0;
+                        }
+                    document.getElementById($(object).attr("id")).firstChild.play();
+                    }
+
+                    
+
+                    function uploadAudio (mp3Data,recordingname) {
+                    var fd = new FormData();
+                    fd.append("recordingData", mp3Data);
+                    fd.append("recordingName", recordingname);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'upload.php', true);
+                    xhr.onload = function(data) {
+                    if (this.status == 200) {
+                        //console.log(data);
+                        console.log("file is uplaod");
+                    };
+                };
+                xhr.send(fd);
+            }
+    </script>
+</body>
+</html>
+
+

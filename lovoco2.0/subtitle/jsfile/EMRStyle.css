@@ -1,0 +1,1690 @@
+/* ***********************************Proprietary Notice****************************************
+This Software and the intellectual property therein is property of GoVivace. 
+Unauthorized copying, duplication,
+or any other improper use not directly authorized by the company is strictly prohibited.
+ Copyright 2010-2015
+********************************************************************************************* 
+*/
+
+BODY
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    border-right: medium none;
+    border-top: medium none;
+    margin: 0px;
+    border-left: medium none;
+    border-bottom: medium none; /*background-image: url(/Images/bg.gif);*/
+    background-color: White;
+}
+html, body, form  
+{  
+   height: 100%;  
+   margin: 0px;  
+   padding: 0px;  
+}  
+
+/*
+.clsGridheader th
+{
+    background: transparent url(/Images/extended-button.png) repeat-x scroll 0 0;
+    border-bottom: 2px solid #6593CF;
+    border-right: 1px solid #6593CF;
+    color: #15428B;
+    font-weight: 700;
+    height: 20px;
+    padding: 2px 8px;
+    text-align: center;
+}
+.clsGridheader th a
+{
+    display: block;
+    font-size: 12px;
+}*/
+.clsGridheader
+{
+    border: 1px solid #9DC9F1;
+}
+.clsGridheader th,.clsGridRowfooter td
+{
+    cursor: default;
+    font-family: Arial,Helvetica,Tahoma,Sans-Serif,Monospace;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.clsGridheader th
+{
+    background: transparent url(/Images/extended-button.png) repeat-x scroll 0 0;
+    border-bottom: 2px solid #6593CF;
+    border-right: 1px solid #6593CF;
+    color: #15428B;
+    font-weight: 700;
+    height: 20px;
+    padding: 2px 8px;
+}
+.clsGridheader a
+{
+    display: block;
+    font-size: 12px;
+}
+.clsGridheader a, .clsGridRow a
+{
+    text-decoration: none;
+}
+.clsGridheader a:hover, .clsGridRow a:hover
+{
+    text-decoration: underline;
+}
+.clsGridRow > td, .clsGridRow-alt > td
+{
+    border-bottom: 1px solid #E5ECF9;
+    border-right: 1px solid #E5ECF9;
+    color: #000000;
+    padding: 2px 8px;
+}
+.clsGridRow:hover, .clsGridRow-alt:hover
+{
+    background: transparent url(/Images/gridview-gradient.png) repeat-x scroll 0 0;
+}
+.clsGridRow-alt
+{
+    background-color: #F5F5F5;
+}
+.clsGridRow-selected
+{
+    background-color: #FAFAD2;
+}
+.clsGridRow-edit td
+{
+    background-color: #E5ECF9;
+}
+
+
+
+/*.clsGridheader
+{
+    font-family: Verdana;
+    background-image: url(/Images/header.gif);
+    height: 24px;
+    color: black;
+    font-weight: normal;
+}*/
+.accordionHeaderSelected
+{
+    border: 1px solid #2F4F4F;
+    color: white;
+    background-color: #5078B3;
+    font-family: Arial, Sans-Serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.accordionHeader
+{
+    border: 1px solid #2F4F4F;
+    color: white;
+    background-color: #2E4d7B;
+    font-family: Arial, Sans-Serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.accordionContent
+{
+    background-color: #D3DEEF;
+    border: 1px dashed #2F4F4F;
+    border-top: none;
+    padding: 5px;
+    padding-top: 10px;
+}
+
+.headerRow
+{
+    color: black;
+    font-weight: bolder;
+    background-color: #e0ebfd;
+    text-transform: capitalize;
+    background-image: url(/Images/backup1.png);
+    height: 30px;
+}
+.PageLeft
+{
+    background-image: url(/Images/bck-shdr-lft.jpg);
+    background-repeat: repeat-y;
+    background-position: right;
+}
+
+.PageCentre
+{
+    background-color: #FFFFFF;
+}
+
+.PageRight
+{
+    background-image: url(/Images/bck-shdr-rt.jpg);
+    background-repeat: repeat-y;
+    background-position: left;
+}
+.headerRowPopUp
+{
+    color: black;
+    font-weight: bolder;
+    background-color: #e0ebfd;
+    text-transform: capitalize;
+    background-image: url(/Images/bck-07.jpg);
+    height: 20px;
+    color: White;
+}
+.MyCalendar .ajax__calendar_container
+{
+    border: 1px solid #646464;
+    background-color: #EFF3FB;
+    color: red;
+}
+.MyCalendar .ajax__calendar_other .ajax__calendar_day, .MyCalendar .ajax__calendar_other .ajax__calendar_year
+{
+    color: black;
+}
+.MyCalendar .ajax__calendar_hover .ajax__calendar_day, .MyCalendar .ajax__calendar_hover .ajax__calendar_month, .MyCalendar .ajax__calendar_hover .ajax__calendar_year
+{
+    color: White;
+    background-color: #507CD1;
+    font-weight: bold;
+}
+.MyCalendar .ajax__calendar_active .ajax__calendar_day, .MyCalendar .ajax__calendar_active .ajax__calendar_month, .MyCalendar .ajax__calendar_active .ajax__calendar_year
+{
+    color: black;
+    font-weight: bold;
+}
+
+.chromestyle
+{
+    width: 100%;
+    font-weight: bold;
+    font: normal 11px Verdana;
+}
+
+.chromestyle:after
+{
+    /*Add margin between menu and rest of content in Firefox*/
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.chromestyle ul li
+{
+    display: inline;
+    color: #000000;
+}
+
+.chromestyle ul li a:hover
+{
+    background: url(chromebg4-over.gif) center center repeat-x; /*THEME CHANGE HERE*/
+}
+
+.chromestyle ul li a[rel]:after
+{
+    /*HTML to indicate drop down link*/
+    content: " "; /*content: " " url(downimage.gif); /*uncomment this line to use an image instead*/
+}
+
+.chromestyle
+{
+    width: 100%;
+    font-weight: bold;
+    font: normal 11px Verdana;
+}
+
+.FooterMenu
+{
+    background-color: #333333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 22px;
+}
+
+.dropmenudiv
+{
+    position: absolute;
+    top: 0;
+    border: 1px solid #4474A2; /*THEME CHANGE HERE*/
+    border-bottom-width: 0;
+    font: normal 10px Verdana;
+    line-height: 14px;
+    z-index: 100;
+    background-color: white;
+    width: 120px;
+    visibility: hidden; /*filter: progid:DXImageTransform.Microsoft.Shadow(color=#CACACA,direction=135,strength=4); Add Shadow in IE. Remove if desired*/
+}
+
+.dropmenudiv a
+{
+    width: 100%;
+    display: block;
+    text-indent: 3px;
+    border: 1px solid #5D8ABD; /*THEME CHANGE HERE*/
+    padding: 2px 0;
+    text-decoration: none;
+    color: black;
+}
+
+.dropmenudiv a:hover
+{
+    /*THEME CHANGE HERE*/
+    background-color: #FFECEC;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+img
+{
+    border: 0pt;
+}
+
+#vista_toolbar ul
+{
+    background-image: url(/images/back.gif);
+    background-repeat: repeat-x;
+    line-height: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    width: 100%;
+}
+
+#vista_toolbar li
+{
+    display: inline;
+    padding: 0;
+}
+
+#vista_toolbar a
+{
+    color: #FFF; /* need because it will use default link color */
+    float: left;
+    padding: 0 3px 0 3px; /* left 3 px because of left.png image */
+    text-decoration: none;
+}
+
+#vista_toolbar a span
+{
+    display: block;
+    float: none;
+    padding: 0 10px 0 7px;
+}
+
+#vista_toolbar a span img
+{
+    border: none;
+    margin: 8px 4px 0 0;
+}
+
+/* show picture when mouse over link */
+#vista_toolbar a:hover
+{
+    background: url(/images/left.png) no-repeat left center;
+}
+
+#vista_toolbar a:hover span
+{
+    background: url(/images/right.png) no-repeat right center;
+}
+
+#vista_toolbar a:click span
+{
+    background: url(/images/right.png) no-repeat right center;
+}
+
+#vista_toolbar a.right
+{
+    float: right; /* for help button - just add class "right" ->  <a class="right"... */
+}
+
+
+/*_____________________ */
+
+#vista_toolbar1 li
+{
+    display: inline;
+    padding: 0;
+}
+
+#vista_toolbar1 a
+{
+    color: #FFF; /* need because it will use default link color */
+    float: left;
+    padding: 0 3px 0 3px; /* left 3 px because of left.png image */
+    text-decoration: none;
+    font: normal 12px 'Trebuchet MS' , 'Arial';
+}
+
+#vista_toolbar1 a span
+{
+    display: block;
+    float: none;
+    padding: 0 10px 0 7px;
+}
+
+#vista_toolbar1 a span img
+{
+    border: none;
+    margin: 8px 4px 0 0;
+}
+
+/* show picture when mouse over link */
+#vista_toolbar1 a:hover
+{
+    background: url(/images/left.png) no-repeat left center;
+}
+
+#vista_toolbar1 a:hover span
+{
+    background: url(/Images/right.png) no-repeat right center;
+}
+
+#vista_toolbar1 a.right
+{
+    float: right; /* for help button - just add class "right" ->  <a class="right"... */
+}
+
+.link
+{
+    height: 25;
+    background: url('/images/main.jpg');
+    padding-left: 10px;
+    font: normal 10px 'Trebuchet MS' , 'Arial';
+    color: #ffffff;
+}
+
+.sublink
+{
+    font: bold 14px 'Trebuchet MS' , 'Arial';
+    color: #ffffff;
+}
+.subli
+{
+    padding-left: 10px;
+    color: #ffffff;
+    height: 10px;
+    font: normal 12px 'Trebuchet MS' , 'Arial'; /*height:25;background:url('/images/main.jpg');padding-left:10px;font:normal 10px 'Trebuchet MS','Arial';color:#ffffff;*/
+}
+.SideHeading
+{
+   
+    vertical-align: bottom;
+    padding: 3px;
+    width: 90%;
+    font-weight: bold;
+    border: 1px solid #a4a4a4;
+    border-bottom: 0px;
+    border-right: 0px;
+    background-color: #EFEFEF;
+}
+.SideClose
+{
+    width: 5%;
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    border-bottom: 0px;
+    color: White;
+}
+.SideSection
+{
+    visibility: hidden;
+    position: absolute;
+    width: 1px;
+    top: 73px;
+    border: 1px thin #a4a4a4;
+}
+.SideContent
+{
+    border: 1px solid #a4a4a4;
+    padding: 0px;
+    width: 100%;
+}
+
+.c
+
+.clsheader
+{
+    color: Black;
+    font-family: arial;
+    height: 210px;
+    font-weight: bold;
+    font-size: 12px;
+    background-image: url('/Images/coversheet.gif');
+    background-repeat: repeat-x;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    vertical-align:middle;
+    width: 482px;
+}
+
+idheaderItemOfService
+{
+    font-family: Arial;
+    background-image: url(/Images/header.jpg);
+    height: 29px;
+    color: Black;
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    border-right: 1px solid #ccc;
+    padding-left: 5px;
+}
+
+
+.clsHeaderBtm
+{
+    margin-bottom: 10px;
+}
+
+.clsGrid
+{
+    margin-top: 20px;
+}
+
+
+.clsTextbox
+{
+    font-family: Trebuchet MS, helvetica, sans-serif;
+    visibility: visible;
+    border: 1px solid #6699CC;
+    color: Black;
+    vertical-align: middle;
+    background: White url(/Images/input_background.gif) repeat-x;
+    font-size: 11px;
+}
+.clsDropDown
+{
+    font-family: Verdana, verdana, helvetica, sans-serif;
+    visibility: visible;
+    border: 1px solid #6699CC;
+    color: Black;
+    vertical-align: middle;
+    background: White url(/Images/input_background.gif) repeat-x;
+    font-size: 11px;
+}
+.clsLable
+{
+    font-family: Arial, helvetica, sans-serif;
+    visibility: visible;
+    letter-spacing: 1px;
+    color: Black;
+    vertical-align: middle;
+    font-size: 12px;
+}
+.middlebtn
+{
+    background-image: url(/Images/linkbar.png);
+    color: white;
+    padding-top: 5px;
+    height: 30px;
+    width: 120px;
+    background-repeat: repeat-x;
+    text-align: center;
+}
+
+.middleastbtn
+{
+    background-image: url(/Images/linkbar.png);
+    color: white;
+    padding-top: 5px;
+    height: 30px;
+    width: 150px;
+    background-repeat: repeat-x;
+    text-align: center;
+}
+
+.clsCalander
+{
+    font-family: Verdana, helvetica, sans-serif;
+    visibility: visible;
+    color: Black;
+    vertical-align: middle;
+    font-size: 11px;
+}
+.clsheadericon
+{
+    padding-right: 6px;
+}
+
+.clsheaderpatientinfo
+{
+    font-family: Verdana, helvetica, sans-serif;
+    visibility: visible;
+    color: Black;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+.thumbnail
+{
+    position: relative;
+    z-index: 0;
+}
+
+.thumbnail:hover
+{
+    background-color: transparent;
+    z-index: 50;
+}
+
+.thumbnail span
+{
+    /*CSS for enlarged image*/
+    position: absolute;
+    background-color: lightyellow;
+    padding: 5px;
+    left: -1000px;
+    border: 1px dashed gray;
+    visibility: hidden;
+    color: black;
+    text-decoration: none;
+}
+
+.thumbnail span img
+{
+    /*CSS for enlarged image*/
+    border-width: 0;
+    padding: 2px;
+}
+
+.thumbnail:hover span
+{
+    /*CSS for enlarged image on hover*/
+    visibility: visible;
+    top: 30;
+    left: 5px; /*position where enlarged image should offset horizontally */
+    right: 35px; /*position where enlarged image should offset horizontally */
+}
+
+
+/*input
+{
+    border:solid 1px #0099CC;
+    font-size:11px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+}*
+
+
+
+.clsGridheaderFavourites
+ {
+ 	 font-family:Arial;
+	background-image:url(/Images/header.gif);
+	height:28px;	
+	color:Black;
+	font-size:11px;
+	font-weight:normal;
+	letter-spacing:1px;
+	border-right:1px solid #ccc;
+	padding-left:5px;
+	padding-top:10px;
+	
+ }
+.tabmiddlebtn
+{
+background-image:url(/Images/middlebutton.gif);
+color:Black;
+height:28px;
+width:133px;
+
+	
+}
+.grdBorderRight
+	{
+		border-right:1px solid #ccc;
+		padding-left:5px;
+	}
+	
+.clsbutton
+ {
+	  color: Black;
+	  background-color: #ECE9D8;
+	  border: 1px outset #AFAC9C;
+	  font-family:Verdana;
+	  font-size:11px;
+ }
+.clsGridheaderFavourites 
+ {
+ 	font-family:Arial;
+	background-image:url(/Images/header.gif);
+	height:28px;	
+	color:Black;
+	font-size:11px;
+	font-weight:normal;
+	letter-spacing:1px;
+	border-right:1px solid #ccc;
+	padding-left:5px;
+	padding-top:10px;
+ }
+ 
+ 
+.pagination
+{
+ padding: 2px;
+}
+
+.pagination ul{
+margin: 0;
+padding: 0;
+text-align: left; /*Set to "right" to right align pagination interface
+font-size: 16px;
+}*/
+
+.pagination li
+{
+    list-style-type: none;
+    display: inline;
+    padding-bottom: 1px;
+}
+
+.pagination a, .pagination a:visited
+{
+    padding: 0 5px;
+    border: 1px solid #FFA615;
+    text-decoration: none;
+    color: #2e6ab1;
+}
+
+.pagination a:hover, .pagination a:active
+{
+    border: 1px solid #2b66a5;
+    color: #000;
+    background-color: #FFFF80;
+}
+
+.pagination a.currentpage
+{
+    background-color: #2e6ab1;
+    color: #FFF !important;
+    border-color: #2b66a5;
+    font-weight: bold;
+    cursor: default;
+}
+
+.pagination a.disablelink, .pagination a.disablelink:hover
+{
+    background-color: white;
+    cursor: default;
+    color: #929292;
+    border-color: #929292;
+    font-weight: normal !important;
+}
+
+.pagination a.prevnext
+{
+    font-weight: bold;
+}
+
+.checkbox
+{
+    font-family: Arial;
+    color: Black;
+    font-size: 12px;
+    font-weight: normal;
+    height: 0.5em;
+    width: 0.5em;
+}
+.Textbox
+{
+    font-family: arial, verdana, helvetica, sans-serif;
+    border: 1px solid #6699CC;
+    color: Black;
+    vertical-align: middle;
+    background: White;
+    background-image: url(/Images/input_background.gif);
+    font-size: 11px;
+}
+.DropDown
+{
+    font-family: arial, verdana, helvetica, sans-serif;
+    visibility: visible;
+    border: 1px solid #6699CC;
+    color: Black;
+    vertical-align: middle;
+    background: White;
+    background-image: url(/Images/input_background.gif);
+    font-size: 12px;
+}
+
+.button
+{
+    color: Black;
+    background-color: #E0DBBE;
+    border: 1px outset #AFAC9C;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.Lable2
+{
+    font-family: Arial, helvetica, sans-serif;
+    visibility: visible;
+    letter-spacing: 1px;
+    color: Black;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.clsListBox
+{
+    font-family: arial, helvetica, sans-serif;
+    visibility: visible;
+    border: 1px solid #6699CC;
+    color: Black;
+    vertical-align: middle;
+    background: White url(/Images/input_background.gif) repeat-x;
+    font-size: 12px;
+}
+
+ .ImageDisplayheader
+{
+    font-family: Arial;
+    background-image: url(/Images/header.gif);
+    height: 20px;
+    color: Black;
+    font-size: 11px;
+    font-weight:bold;
+    letter-spacing: 1px;
+    border-right: 1px solid #ccc;
+    padding: 3px;
+    width: 90%;
+}
+.ImageDisplayheaderClose
+{
+    width: 5%;
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    border-bottom: 0px;
+    color: White;
+}
+
+.clsLinkButton 
+{ 
+    font-family: Arial; font-size: 11px; font-weight:bold; color: #2175d9; padding-left:1px;
+}
+A.clsLinkButton 
+{
+    text-decoration: none;
+}
+A.clsLinkButton:hover
+{
+    COLOR: #2175d9; text-decoration: underline;
+}
+
+.tdbgGray
+{
+	font-family: Verdana,Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight:bold;
+    text-decoration: none;
+    line-height: 20px;
+    background-color: #F0F0F0;
+    padding-left: 2px;
+}
+.BgBlockLeft
+{    
+    background-image: url(/Images/bck-shdr-lft.jpg);
+    width:22; 
+    height:10;
+}
+
+.BgBlockRight
+{    
+    background-image: url(/Images/bck-shdr-rt.jpg);
+    width:22; 
+    height:10;
+}
+.BgBlockTop
+{    
+    background-image: url(/Images/back.gif);    
+    height:30;
+    vertical-align: middle; 
+    color: White; 
+    font-size: 11px; 
+    padding-left: 0px; 
+    text-decoration:none;     
+}
+
+.DetailHeader
+{
+    font-family: Arial;
+    background-image: url(/Images/gridview-gradient.png);
+    height: 20px;
+    color: Black;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;   
+}
+.TextHeading
+{
+    font-family: Arial;
+    color: Black;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;   
+}
+
+.panel_y {
+	
+	overflow-y: scroll;
+	overflow-x: hidden;
+	scrollbar-base-color: #339933;
+	scrollbar-arrow-color: #71ABDB;
+	scrollbar-face-color: #f2f7fd;
+	scrollbar-slider-color:#71ABDB;
+	scrollbar-highlight-color: #f2f7fd;
+	scrollbar-3dlight-color:#71ABDB;
+	scrollbar-shadow-color: #f2f7fd;
+	scrollbar-darkshadow-color: #71ABDB;
+	scrollbar-track-color: #ffffff;
+	border-bottom:#CCCCCC;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+.panel_x {
+	
+	overflow-y: hidden;
+	overflow-x: scroll;
+	scrollbar-base-color: #339933;
+	scrollbar-arrow-color: #71ABDB;
+	scrollbar-face-color: #f2f7fd;
+	scrollbar-slider-color:#71ABDB;
+	scrollbar-highlight-color: #f2f7fd;
+	scrollbar-3dlight-color:#71ABDB;
+	scrollbar-shadow-color: #f2f7fd;
+	scrollbar-darkshadow-color: #71ABDB;
+	scrollbar-track-color: #ffffff;
+	border-bottom:#CCCCCC;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+.panel_x_y {
+	
+	overflow-y: auto;
+	overflow-x: auto;
+	scrollbar-base-color: #339933;
+	scrollbar-arrow-color: #71ABDB;
+	scrollbar-face-color: #f2f7fd;
+	scrollbar-slider-color:#71ABDB;
+	scrollbar-highlight-color: #f2f7fd;
+	scrollbar-3dlight-color:#71ABDB;
+	scrollbar-shadow-color: #f2f7fd;
+	scrollbar-darkshadow-color: #71ABDB;
+	scrollbar-track-color: #ffffff;
+	border-bottom:#CCCCCC;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+
+.ele_T5_Gray { font-family: Arial; font-size: 11px; color: #000000; padding-left:2px; }
+
+
+.LoginTextbox
+{
+    font-family: arial, verdana, helvetica, sans-serif;
+    border: 1px solid #6699CC;
+    color: Black;
+    vertical-align: middle;
+    background: White;   
+    font-size: 10pt;
+    height:20px;
+    padding-top:2px;    
+}
+
+.RgFilterBox
+{
+    margin:0px;
+    padding-left: 0px;
+    padding: 0px;
+color: Black;
+    font-family: arial;
+    height: 25px;
+    font-weight: bold;
+    font-size: 12px;
+    background-image: url(/Images/coversheet.gif);
+    background-repeat: repeat-x;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    vertical-align:middle;
+    
+    
+}
+
+
+.RadGrid_Custom
+{
+	/*border: 1px solid #002d96;
+	background: #d6e5f3;*/
+	border:1px solid;
+	color: #000;
+}
+
+/*header*/
+.RadGrid_Custom .rgHeaderDiv
+{
+	/*background: #d6e5f3 0 -7750px repeat-x url('Grid/sprite.gif');*/
+	background-color:#d6e5f3;
+	border-bottom:1px solid #5d8cc9; 
+	
+}
+
+.RadGrid_Custom .rgHeader, .RadGrid_Custom th.rgResizeCol
+{
+	color: Black;
+	font-family: arial;
+	font-weight: normal;
+	font-size: 12px;
+	margin-bottom: 0px;
+	letter-spacing: 1px;
+	vertical-align: middle;
+	line-height: 15px;
+	padding-top: 5px;
+	padding-bottom: 4px;
+	border-left:1px solid #89aee5;     
+	border-bottom :1px solid #89aee5;    
+	background-color:#d6e5f3;
+}
+
+.RadGrid_Custom .rgGroupHeader
+{
+	background: none;
+	background-color:#d6e5f3;
+	/*background-image:url('/Images/coversheet.gif');*/ /* To Change Group Hader Setting*/
+	font-size: 1.1em;
+	line-height: 21px;
+	color: #0045d6;
+}
+
+.RadGrid_Custom .rgGroupHeader .rgExpand
+{
+	background-position: 1px -495px;
+}
+
+.RadGrid_Custom .rgGroupHeader .rgCollapse
+{
+	background-position: 1px -93px;
+}
+
+/*hierarchy*/
+
+.RadGrid_Custom .rgDetailTable
+{
+	border: 1px solid #002d96;
+	border-right: 0;
+}
+
+.RadGrid_Custom .rgExpand
+{
+	background-position: 1px -496px;
+}
+
+.RadGrid_Custom .rgCollapse
+{
+	background-position: 1px -94px;
+}
+
+/*rows*/
+.RadGrid_Custom .rgRow td, .RadGrid_Custom .rgAltRow td, .RadGrid_Custom .rgEditRow td, .RadGrid_Custom .rgFooter td
+{
+	border: 1px solid;
+	border-top: 0;
+	border-right: 0;
+	padding-top: 4px;
+	padding-bottom: 3px;
+	font-size: 11px;
+	line-height: 13px;
+}
+
+.RadGrid_Custom .rgRow td, .RadGrid_Custom .rgAltRow td
+{
+	border-color: #d0d7e5;
+}
+
+
+/*filtering*/  
+ 
+.RadGrid_Custom .rgFilterRow  
+{  
+    background:#d6e5f3;  
+}  
+ 
+.RadGrid_Custom .rgFilterRow td  
+{  
+	border: 1px solid;
+    padding-top:5px;  
+    padding-bottom:6px;  
+    border:solid #89aee5;  
+    border-width:0 0 0px 1px;  
+    
+}  
+ 
+.RadGrid_Custom .rgFilter  
+{  
+    width:22px;  
+    height:22px;  
+    margin:0 0 0 2px;  
+    background-position:0 -300px;  
+}  
+
+.RadGrid_Custom .rgFilter:hover  
+{  
+    background-position:0 -350px;  
+}  
+ 
+.RadGrid_Custom .rgFilterActive,  
+.RadGrid_Custom .rgFilterActive:hover  
+{  
+    background-position:0 -400px;  
+}  
+
+.lblLnk
+{
+	font-weight:bold;
+}
+.lblLnk:hover
+{
+	color:Red;
+	text-decoration:none;
+}
+.lblLnk:out
+{
+	color: blue ;
+	text-decoration:none;
+}
+.buttonBlue {
+BORDER-RIGHT: #AAA 1px solid;
+PADDING-RIGHT: 6px;
+BORDER-TOP: #AAA 1px solid;
+PADDING-LEFT: 6px;
+FONT-SIZE: 11px;
+font-weight: bold;
+PADDING-BOTTOM: 2px;
+BORDER-LEFT: #AAA 1px solid;
+CURSOR: default;
+COLOR: black;
+PADDING-TOP: 2px;
+BORDER-BOTTOM: #AAA 1px solid;
+HEIGHT: 20px;
+BACKGROUND-COLOR: #DEDEDE;
+TEXT-ALIGN: center;
+border-right: 1px solid #AAA;
+border-top: 1px solid #AAA;
+border-left: 1px solid #AAA;
+border-bottom: 1px solid #AAA;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;           
+TEXT-ALIGN: center
+}
+.buttonBlue:hover
+{
+    background-color: #5478B4;
+}
+.chkHover:hover
+{
+    border-color:Lime;
+}
+
+.spreadSheet
+{
+    width: 752px;
+    background: url(Images/spreadsheetBg.png) left top no-repeat;
+    padding-top:55px;
+    margin: 0 auto;
+}
+.bottomSheetFrame
+{
+    width: 752px;
+    background: url(Images/spreadsheetBottomBg.png) left bottom no-repeat;
+    padding-bottom:14px;
+    overflow: hidden;
+}
+.RadGrid_Office2007
+{
+    border-left: none !important;
+}
+.multiPage
+{
+    margin: 0 14px;
+}
+.tabStrip
+{
+    margin: 0 15px 0 14px !important;
+}
+.tabStrip .rtsLevel1
+{
+    padding:0 !impo
+}
+.footer
+{
+    background-image: url('../Images/footer.gif');
+	height: 26px;
+	background-color: transparent;
+	background-repeat: repeat;
+	background-position: center bottom
+}
+.BlueBox
+{
+    background-color: #B9D6F8;
+    border: 1px solid #5498EB;
+    padding: 3px;
+    vertical-align: top;
+}
+.ItemFont
+{
+	font-size:50px;
+	font-weight:bold;
+	font-family:Tahoma;
+}
+.reTool .SpeechRecognition
+{
+   background-image: url(../Img/mic.jpg);
+}
+.clssubtopic
+{
+    background-color: #5685B3;
+    color: white;
+    font-family: verdana;
+    font-weight: bold;
+    height: 18px;
+    font-size: 11px;
+    border-bottom: solid 1px #9f9f9f;
+    padding-left: 10px;
+}
+
+.clssubtopicbar
+{
+    height: 22px;
+    border-bottom: solid 1px #9f9f9f;
+}
+
+
+.clspopupwindow
+{
+    background-image: url(/Images/bg.gif);
+}
+
+.GVFixedHeader
+{
+    font-weight: normal;
+    text-align: left;
+    position: relative;
+    height: 22px;
+    top: expression(this.parentNode.parentNode.parentNode.scrollTop);
+}
+
+.GVFixedFooter
+{
+    position: relative;
+    background-image: url(/images/backlg.jpg);
+    height: 22px;
+    font-size: xx-small;
+    top: expression(this.parentNode.parentNode.parentNode.scrollTop);
+}
+
+.CollapsablePanelTop
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #003366;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: 5px;
+    height: 30px;
+    padding-left: 30px;
+    background-color: #e0ebfd;
+    vertical-align: middle;
+}
+
+.clsGridheaderCoverSheet
+{
+    background-image: url(/Images/coversheet.gif);
+    height: 19px;
+    color: Black;
+    letter-spacing: 1px;
+    border-right: 1px solid #ccc;
+    padding-left: 5px;
+}
+.txt06
+{
+    font-family: Verdana,Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #003366;
+    text-decoration: none;
+    line-height: 20px;
+    background-color: #F0F0F0;
+    padding-left: 8px;
+}
+.brdr01
+{
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-top-color: #DBDBDB;
+    border-right-color: #BEBEBE;
+    border-bottom-color: #BEBEBE;
+    border-left-color: #DBDBDB;
+}
+.TopToolbar
+{
+    background-image: url(/images/bck01.jpg);
+}
+
+/*input
+{
+    border:solid 1px #0099CC;
+    font-size:11px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+}*/
+
+chk1
+{
+    border: solid 0px black;
+}
+
+
+input:visited
+{
+    border: solid 2px #0099CC;
+    font-size: 24px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+textarea
+{
+    border: solid 1px #0099CC;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.gridInput
+{
+    border: solid 0px #0099CC;
+    font-size: 11px;
+    text-align: left;
+    padding: 1px 1px 1px 1px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+a.BtnBookmark:link, a.BtnBookmark:visited
+{
+    background-image: url(/images/butt-bck01.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    height: 25px;
+    width: 95px;
+    border: none;
+}
+a.BtnBookmark:hover
+{
+    background-image: url(/images/butt-bck02.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    height: 25px;
+    width: 95px;
+    border: none;
+}
+
+.line01
+{
+    border-top-width: 1px;
+    border-top-style: dotted;
+    border-top-color: #999999;
+    border-right-color: #999999;
+    border-bottom-color: #999999;
+    border-left-color: #999999;
+}
+.bck-tpmnu
+{
+    background-image: url(/images/bck-07.jpg);
+}
+.bck-Loginmnu
+{
+    background-image: url(/images/bck-07.jpg);
+    background-repeat: repeat-x;
+    height: 32px;
+}
+.txt02
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #003366;
+    text-decoration: none;
+}
+.lnk-rt
+{
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+}
+.topbck
+{
+    background-image: url(/images/topbar-bck.jpg);
+    background-repeat: repeat-x;
+}
+.PageLeft
+{
+    background-image: url(/Images/bck-shdr-lft.jpg);
+    background-repeat: repeat-y;
+    background-position: right;
+}
+
+.PageCentre
+{
+    background-color: #FFFFFF;
+}
+
+.PageRight
+{
+    background-image: url(/Images/bck-shdr-rt.jpg);
+    background-repeat: repeat-y;
+    background-position: left;
+}
+
+.MnuHover
+{
+    background-color: #FDFDFD;
+    height: 30px;
+    color: Black;
+}
+.FooterMenu
+{
+    background-color: #333333;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 22px;
+}
+.tabOn
+{
+    background-image: url(/images/backlg.jpg);
+    height: 25px;
+    text-align: center;
+    color: White;
+}
+
+.tabOff
+{
+    background-image: url(/images/backup.png);
+    height: 25px;
+    text-align: center;
+    border-bottom: solid 1px #599DF0;
+}
+.tabMenuOff
+{
+    text-decoration: none;
+    line-height: 15px;
+    color: white;
+}
+.dropdownlist
+{
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: normal;
+    color: black;
+    width: 150px;
+}
+.ListBox
+{
+    overflow: hidden;
+    border: solid 0px black;
+}
+
+.black
+{
+    float: left;
+    filter: alpha(opacity=25);
+    -moz-opacity: .25;
+    opacity: .25;
+}
+
+.white
+{
+    background-color: White;
+}
+
+.linkText
+{
+    text-decoration: underline;
+    text-transform: none;
+}
+.gridInputNumber
+{
+    border: solid 0px #0099CC;
+    font-size: 11px;
+    text-align: right;
+    padding: 1px 1px 1px 1px;
+}
+
+.ButtonClicked
+{
+    border-color: #EB8022;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.ButtonUnClicked
+{
+    border-color: #EB8022;
+    border-width: 0px;
+    border-style: solid;
+}
+
+.List
+{
+    border: solid 1px black;
+    border-style: solid;
+}
+.txtAlignRight
+{
+    border-right: #0099cc 1px solid;
+    padding-right: 1px;
+    border-top: #0099cc 1px solid;
+    padding-left: 1px;
+    font-size: 11px;
+    padding-bottom: 1px;
+    border-left: #0099cc 1px solid;
+    padding-top: 1px;
+    border-bottom: #0099cc 1px solid;
+    text-align: right;
+}
+
+.SideHeading
+{
+    
+    vertical-align: bottom;
+    padding: 3px;
+    width: 90%;
+    font-weight: bold;
+    border: 1px solid #a4a4a4;
+    border-bottom: 0px;
+    border-right: 0px;
+    background-color: #EFEFEF;
+}
+.SideClose
+{
+    width: 5%;
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    background-color: #EFEFEF;
+    border: 1px solid black;
+    border-bottom: 0px;
+    color: White;
+}
+.SideSection
+{
+    visibility: hidden;
+    position: absolute;
+    width: 1px;
+    top: 73px;
+    border: 1px thin #a4a4a4;
+}
+.SideContent
+{
+    border: 1px solid #a4a4a4;
+    padding: 0px;
+    width: 100%;
+}
+
+.tabMenuOff
+{
+    text-decoration: none;
+    color: White;
+}
+
+.clsGridheaderCoverSheet
+{
+    background-image: url(/Images/cover-header.jpg);
+    height: 19px;
+    color: Black;
+    letter-spacing: 1px;
+    border-right: 1px solid #ccc;
+    padding-left: 5px;
+}
+.modalBackground 
+{
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+.modalPopup 
+{
+	background-color:#EBE8D3;
+	border-width:3px;
+	border-style:solid;
+	border-color:Gray;
+	padding:3px;
+        z-index:10000000000;
+}
+.unwatermarked 
+{
+	font-style:italic;
+}
+
+.watermarked 
+{
+	font-style:italic;
+	padding:2px 0 0 2px;
+	border:1px solid #6699CC;
+	background-color:#EBF2FE;
+	color:gray;
+	height:14px;
+}
+
+.tophead
+{
+    
+    height: 30px;
+    vertical-align: middle; 
+    color: White; 
+    font-size: 11px; 
+    padding-left: 1px; 
+    text-decoration:none;
+    font-family:Verdana;
+    font-weight:normal;
+    
+}
+/* For notification */
+        .clockSession
+        {
+            width: 409px;
+            height: 174px;
+            margin: auto;
+            background: url(../Img/clockSession.jpg) no-repeat;
+        }
+        
+        .contSession
+        {
+            width: 270px;
+            float: right;
+            text-align: center;
+            margin: 20px 20px 0 0 ;
+        }
+        
+        .sessionExpire
+        {
+            color: #3366ff;
+            padding-top: 30px;
+        }
+        
+        .showNotification
+        {
+            padding-top: 15px;
+            color: #666;
+        }
+        
+        .timeRemain
+        {
+            padding-top: 5px; 
+            color: #000;
+        }
+        
+        .timeSeconds
+        {
+            font-size: 30px;
+        }
+        
+        .infoIcon, .notificationContent
+        {
+            display: inline-block;
+            display: inline;
+        }
+        
+        .infoIcon
+        {
+            width: 32px;
+            height: 32px;
+            margin: 0 10px ;
+            vertical-align: top;
+        }
+        
+        .notificationContent
+        {
+            width: 160px;
+            vertical-align: middle;
+        }       
